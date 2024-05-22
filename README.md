@@ -159,26 +159,12 @@ Disconnect:
 
 Event: disconnect
 Description: Fired when a user disconnects.
-Postman Collection
-A Postman collection is included to demonstrate API interaction. You can import hq_collection.json into Postman to get started quickly.
+
 
 
 Acknowledgments
 Special thanks to the developers and maintainers of the libraries and frameworks used in this project.
 
-### Including the Postman Collection
-
-Make sure to export your Postman collection as a JSON file and save it in your repository. Here's how you can do that:
-
-1. **Open Postman** and create a collection with all your API requests.
-2. **Export the collection**:
-   - Click on the three dots next to your collection name.
-   - Select "Export".
-   - Choose "Collection v2.1" and click "Export".
-   - Save the file as `hq_collection.json`.
-3. **Add the file to your repository**:
-   - Place `hq_collection.json` in the root directory of your project.
-   - Commit and push the file to your GitHub repository.
 
 
 
