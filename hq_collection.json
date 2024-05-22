@@ -1,0 +1,156 @@
+{
+    "info": {
+      "name": "Chat Application API",
+      "_postman_id": "abc12345-6789-0def-ghij-klmnopqrstuv",
+      "description": "This collection contains requests for the Chat Application API.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Register User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"yourpassword\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/register",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "register"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Login User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"yourpassword\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/login",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "login"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update User Status",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"status\": \"AVAILABLE\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/status",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "status"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Send Message",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"recipient\": \"recipient_user_id\",\n  \"content\": \"Hello!\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/messages",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "messages"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Retrieve Messages",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/messages/recipient_user_id",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "messages",
+              "recipient_user_id"
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
