@@ -1,174 +1,77 @@
-# Chat_Application
+# Chat App Server
 
-This is a real-time chat application built using Node.js, Express, Socket.IO, and MongoDB. It supports user registration, login, real-time messaging, and status updates.
+This is the server-side code for a chat application built with Node.js, Express, Socket.IO, and MongoDB. The application allows users to register, log in, update their status (available or busy), send messages to other users, and receive messages from the server via Socket.IO.
 
 ## Features
 
 - User registration and authentication with JWT
+- User status management (available or busy)
+- Sending and receiving messages between users
+- Integration with a large language model (LLM) for automated responses when a user is busy
 - Real-time messaging with Socket.IO
-- User status updates (Available, Busy)
-- LLM integration to generate responses when a user is busy
+- MongoDB for data storage
 
-## Technologies Used
+## Prerequisites
+
+Before running the application, make sure you have the following installed:
 
 - Node.js
-- Express
-- MongoDB
-- Mongoose
-- Socket.IO
-- JWT (JSON Web Tokens)
-- Bcrypt.js
-- Axios
-- dotenv
-- CORS
+- MongoDB (or a MongoDB Atlas cluster)
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (version 12 or later)
-- MongoDB (local or cloud instance)
-- npm (Node package manager)
-
-### Installation
+## Installation
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/your-username/your-repository-name.git
-   cd your-repository-name
-2. Install dependencies:
+```bash
+git clone https://github.com/your-repo/chat-app-server.git
+```
 
-bash
-Copy code
+2. Navigate to the project directory:
+
+```bash
+cd chat-app-server
+```
+
+3. Install the dependencies:
+
+```bash
 npm install
+```
 
-3. Set up environment variables:
-Create a .env file in the root directory and add the following environment variables:
-env
-Copy code
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-LLM_API_KEY=your_llm_api_key
+4. Create a `.env` file in the root directory and add the following environment variables:
 
-4. Start the server:
-   
-node server.js
-API Endpoints
-Register a User
-URL: /register
-Method: POST
-Body:
-{
-  "email": "user@example.com",
-  "password": "yourpassword"
-}
+```
+MONGO_URI=<your-mongodb-uri>
+JWT_SECRET=<your-jwt-secret>
+LLM_API_KEY=<your-llm-api-key>
+```
 
-Response:
-{
-  "message": "User registered successfully"
-}
+Replace the placeholders with your actual MongoDB URI, JWT secret, and LLM API key.
 
-Login a User
-URL: /login
-Method: POST
+## Usage
 
-Body:
-{
-  "email": "user@example.com",
-  "password": "yourpassword"
-}
-Response:
-{
-  "token": "your_jwt_token",
-  "temp": "user_id"
-}
-Update User Status
-URL: /status
-Method: PUT
-Headers:
-{
-  "Authorization": "Bearer your_jwt_token"
-}
-Body:
-{
-  "status": "AVAILABLE" | "BUSY"
-}
-Response:
-{
-  "message": "User status updated successfully"
-}
+1. Start the server:
 
-Send a Message
-URL: /messages
-Method: POST
-Headers:
-{
-  "Authorization": "Bearer your_jwt_token"
-}
-Body:
-{
-  "recipient": "recipient_user_id",
-  "content": "Hello!"
-}
-Response:
-{
-  "message": {
-    "sender": "sender_user_id",
-    "recipient": "recipient_user_id",
-    "content": "Hello!",
-    "timestamp": "2024-05-23T14:00:00.000Z"
-  }
-}
+```bash
+npm start
+```
 
+The server will start running on `http://localhost:5000`.
 
-Retrieve Messages
-URL: /messages/:recipientId
-Method: GET
-Headers:
-{
-  "Authorization": "Bearer your_jwt_token"
-}
-Response:
-[
-  {
-    "sender": "sender_user_id",
-    "recipient": "recipient_user_id",
-    "content": "Hello!",
-    "timestamp": "2024-05-23T14:00:00.000Z"
-  },
-  ...
-]
+2. Use a tool like Postman or cURL to interact with the API endpoints:
 
-Socket.IO Events
-Connection:
+- `POST /register` - Register a new user
+- `POST /login` - Log in and obtain a JWT token
+- `PUT /status` - Update user status (requires authentication)
+- `POST /messages` - Send a message to another user (requires authentication)
+- `GET /messages/:recipientId` - Retrieve messages with a specific recipient (requires authentication)
 
-Event: connection
-Description: Fired when a user connects.
-Join Room:
+3. For real-time messaging, connect to the Socket.IO server from your client application using the `socket.io-client` library. Events include:
 
-Event: join
-Description: Join the user's room.
-Data: userId
-Message:
+- `join`: Join a user's room
+- `message`: Receive a new message from another user
 
-Event: message
-Description: Sent to the recipient when a new message is received.
-Disconnect:
+## Contributing
 
-Event: disconnect
-Description: Fired when a user disconnects.
-
-
-
-Acknowledgments
-Special thanks to the developers and maintainers of the libraries and frameworks used in this project.
-
-
-
-
-
-
-
+Contributions are welcome! If you find any issues or want to add new features, please open an issue or submit a pull request.
 
