@@ -180,16 +180,7 @@ Make sure to export your Postman collection as a JSON file and save it in your r
    - Place `hq_collection.json` in the root directory of your project.
    - Commit and push the file to your GitHub repository.
 
-### Sharing Your GitHub Repository
 
-To share your repository, simply provide the link to your GitHub repository. The format will be:
-
-https://github.com/your-username/your-repository-name
-
-javascript
-Copy code
-
-Replace `your-username` with your GitHub username and `your-repository-name` with the name of your repository.
 
 
 
